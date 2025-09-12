@@ -1,0 +1,89 @@
+# 開発タスクYAMLサンプル（参考構造）
+# 目的: Deliveryコマンドの自動生成が出力する dev_tasks.yaml の雛形
+# 注意: 実行時はDiscovery/Focusの成果物から動的に置換されます
+
+dev_tasks:
+  common:
+    - id: T_COMMON_ENV
+      title: プロジェクト初期設定（HTML/CSS/JS構成/Live Server）
+      outputs: [index.html, styles.css, app.js]
+      test_points: [基本表示, クリック動作]
+      estimate_h: 1.0
+      depends: []
+      status: TODO
+    - id: T_COMMON_STORAGE
+      title: localStorage抽象化ユーティリティ
+      outputs: [app.js(storage utils)]
+      test_points: [保存/読込/削除]
+      estimate_h: 1.0
+      depends: [T_COMMON_ENV]
+      status: TODO
+
+  stories:
+    - story: ST1
+      tasks:
+        - id: T_ST1_VIEW
+          title: 「今やる1つ」表示のUI追加
+          outputs: [UI slots, DOM hooks]
+          test_points: [単一表示, 更新]
+          estimate_h: 2.0
+          depends: [T_COMMON_ENV]
+          status: TODO
+        - id: T_ST1_PRIORITY
+          title: 優先度算出（時間制約対応）
+          outputs: [priority module]
+          test_points: [残時間反映]
+          estimate_h: 2.0
+          depends: [T_COMMON_STORAGE]
+          status: TODO
+    - story: ST2
+      tasks:
+        - id: T_ST2_MODE
+          title: 朝/夜UI切替（状態管理+UI）
+          outputs: [mode state, toggle button]
+          test_points: [1秒以内切替, トースト表示]
+          estimate_h: 3.0
+          depends: [T_COMMON_ENV]
+          status: TODO
+        - id: T_ST2_FILTER
+          title: コンテキスト別タスクフィルタ
+          outputs: [filter function]
+          test_points: [仕事=仕事のみ, 家事=家事のみ]
+          estimate_h: 2.0
+          depends: [T_ST2_MODE, T_COMMON_STORAGE]
+          status: TODO
+    - story: ST3
+      tasks:
+        - id: T_ST3_TIME_MATCH
+          title: 隙間時間マッチング（5/10/30分）
+          outputs: [matching module]
+          test_points: [時間別候補]
+          estimate_h: 3.0
+          depends: [T_COMMON_STORAGE]
+          status: TODO
+        - id: T_ST3_PROGRESS
+          title: 達成感可視化（進捗/バッジ）
+          outputs: [progress ui]
+          test_points: [完了反映]
+          estimate_h: 2.0
+          depends: [T_ST3_TIME_MATCH]
+          status: TODO
+
+  non_functional:
+    - id: T_NFR_ACCESSIBILITY
+      title: アクセシビリティ（キーボード操作/コントラスト/VoiceOver）
+      outputs: [ARIA, focus order]
+      test_points: [Tab移動, 読み上げ]
+      estimate_h: 1.5
+      depends: [T_ST1_VIEW]
+      status: TODO
+    - id: T_NFR_PERF
+      title: パフォーマンス（初期表示<300ms）
+      outputs: [lazy render]
+      test_points: [LCP測定]
+      estimate_h: 1.0
+      depends: []
+      status: TODO
+
+  numbering_policy:
+    - prefix: T_ = Task
