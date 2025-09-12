@@ -19,14 +19,22 @@
       content: |
         🔎 自動抽出
         {{auto_marp_meta}}
+    # 成果物の読み込み（現在の構造に対応）
     - name: "read_artifacts"
       action: "read_multiple_files"
       files:
+        - "Flow/{{today}}/{{flow_dir}}/07_開発タスク分解/total_development_spec.md"
+        - "Flow/{{today}}/{{flow_dir}}/01_ペルソナ作成/persona_todo.md"
         - "Flow/{{today}}/{{flow_dir}}/01_ペルソナ作成/experience_map.yaml"
         - "Flow/{{today}}/{{flow_dir}}/02_課題定義/problem_map.yaml"
+        - "Flow/{{today}}/{{flow_dir}}/02_課題定義/customer_problem_map.yaml"
         - "Flow/{{today}}/{{flow_dir}}/03_ソリューションマップ/solution_map.yaml"
         - "Flow/{{today}}/{{flow_dir}}/04_ストーリーマップ/story_map.yaml"
+        - "Flow/{{today}}/{{flow_dir}}/07_開発タスク分解/dev_tasks.yaml"
         - "Flow/{{today}}/{{flow_dir}}/10_タスクリファイン/progress_report.md"
+        - "Flow/{{today}}/{{flow_dir}}/dev/src/index.html"
+        - "Flow/{{today}}/{{flow_dir}}/dev/src/styles.css"
+        - "Flow/{{today}}/{{flow_dir}}/dev/src/app.js"
     
     - name: "collect_meta"
       action: "ask_questions_with_template"
@@ -63,6 +71,11 @@
         `Flow/{{today}}/{{flow_dir}}/11_Marpスライド生成/slides_mvp.marp.md`
         
         Marp for VS Code 拡張機能でプレビュー、またはPDF/PPTXエクスポートできます。
+        
+        📱 デモ用ファイル:
+        - 実装コード: `Flow/{{today}}/{{flow_dir}}/dev/src/index.html`
+        - ライブデモ: `dev/src/index.html` をブラウザで開いて実演
+        
         必要に応じて画像やスクリーンショットを追加してください。
 ```
 
@@ -253,8 +266,9 @@ style: |
 
 <br>
 
-**成果物**: `{{submit_path}}`
+**成果物**: `dev/src/` フォルダ
 **GitHub**: {{github_url}}
+**ライブデモ**: `dev/src/index.html`
 
 <br>
 
@@ -271,6 +285,7 @@ style: |
 {{/dev_process}}
 
 詳細: `Flow/{{today}}/{{flow_dir}}/`
+実装: `Flow/{{today}}/{{flow_dir}}/dev/src/`
 
 ```
 
@@ -292,5 +307,7 @@ style: |
 
 ## 備考
 - ペルソナ、課題、ソリューションの具体的な内容は自動的に成果物から抽出されます
-- スクリーンショットは `screenshots/` フォルダに配置を推奨
+- 実装コードは `dev/src/` フォルダから自動参照されます
+- スクリーンショットは `dev/assets/` フォルダに配置を推奨
 - デモは実演/録画/静止画から選択可能
+- ライブデモ時は `dev/src/index.html` をブラウザで開いて実演
