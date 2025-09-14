@@ -151,7 +151,7 @@ GitHubアカウントを持たない参加者向けに、Stock側の提出フォ
         - [ ] ZIPファイルの存在確認済み
         
         ### アップロード実行
-        - [ ] GoogleDriveフォルダを開く: https://drive.google.com/drive/folders/1GBPNM_qMEx4OHD4iVmqUCguH1Q9xBpD5
+        - [ ] GoogleDriveフォルダを開く: https://drive.google.com/drive/folders/
         - [ ] 「新規」→「ファイルのアップロード」をクリック
         - [ ] ZIPファイル（{{participant_name}}_{{project_id}}_{{today}}.zip）を選択
         - [ ] アップロード進行状況を確認
@@ -193,7 +193,7 @@ GitHubアカウントを持たない参加者向けに、Stock側の提出フォ
           start "https://drive.google.com/drive/folders/"
         else
           echo "手動でブラウザを開き、以下URLにアクセスしてください:"
-          echo "https://drive.google.com/drive/folders/1GBPNM_qMEx4OHD4iVmqUCguH1Q9xBpD5"
+          echo "https://drive.google.com/drive/folders/
         fi
     
     - name: "notify_completion"
